@@ -1,3 +1,7 @@
+
+---
+
+```markdown
 # 🎓 pass_prediction: 대학교 입시결과 예측 모델
 
 > 고등학교 학생의 학생부 내신 성적, 모의고사 점수 및 주요 입시 지표 데이터를 기반으로 대학교 합격 가능성을 분석하고 예측하는 머신러닝 프로젝트입니다.
@@ -33,4 +37,111 @@
 
 ## 4. Architecture
 본 프로젝트는 데이터 수집부터 최종 예측 결과 도출까지 파이프라인 형태로 설계되었습니다.
+
+
+```
+
+[교내외 입시 Raw Data]
+│
+▼
+[데이터 전처리 및 Feature Engineering] ── 결측치 정제 및 인코딩
+│
+▼
+[탐색적 데이터 분석 (EDA)] ───────────── 상관관계 및 분포 시각화
+│
+▼
+[모델 학습 및 튜닝] ────────────────── Scikit-learn 분류 모델 훈련
+│
+▼
+[성능 검증 (Evaluation)] ───────────── Accuracy, F1-Score 평가
+│
+▼
+[합격 예측 결과 출력 (Inference)]
+
+```
+
+---
+
+## 5. Runbook
+이 프로젝트를 로컬 환경에서 복제하고 실행하는 방법입니다.
+
+### 사전 요구 사항 (Prerequisites)
+- Python 3.8 이상 설치 필요
+- Jupyter Notebook 또는 JupyterLab 설치 필요
+
+### 설치 및 환경 세팅
+1. 레포지토리를 클론합니다.
+   ```bash
+   git clone [https://github.com/wonnem/pass_prediction.git](https://github.com/wonnem/pass_prediction.git)
+   cd pass_prediction
+
+```
+
+2. 필요한 라이브러리를 설치합니다.
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn notebook
+
+```
+
+
+
+### 실행 방법
+
+1. 터미널에서 Jupyter Notebook을 실행합니다.
+```bash
+jupyter notebook
+
+```
+
+
+2. 웹 브라우저가 열리면 아래 메인 노트북 파일을 선택하여 실행합니다.
+* `우송고_30723_이혜원_pass_prediction.ipynb`
+
+
+3. 노트북의 각 셀(Cell)을 순서대로 실행(`Shift + Enter`)하여 데이터 전처리 및 모델 학습을 진행합니다.
+
+---
+
+## 6. Troubleshooting
+
+### Q1. 데이터 로드 시 인코딩 오류 (`UnicodeDecodeError`)가 발생합니다.
+
+* **원인:** 한국어 입시 데이터 파일(CSV, Excel)의 인코딩이 `UTF-8`이 아닌 `CP949`(또는 `EUC-KR`)로 저장되어 있을 때 발생합니다.
+* **해결책:** `pd.read_csv()` 함수 내부의 encoding 옵션을 변경해 줍니다.
+```python
+# 변경 전
+df = pd.read_csv('data.csv')
+# 변경 후
+df = pd.read_csv('data.csv', encoding='cp949')
+
+```
+
+
+
+### Q2. `ModuleNotFoundError: No module named 'sklearn'` 에러가 뜹니다.
+
+* **원인:** 가상환경 또는 로컬 환경에 머신러닝 라이브러리가 설치되지 않았습니다.
+* **해결책:** 터미널에서 다음 명령어를 실행하여 라이브러리를 다시 설치해 주세요.
+```bash
+pip install scikit-learn
+
+```
+
+
+
+### Q3. 그래프 출력 시 한글 깨짐 현상이 발생합니다.
+
+* **원인:** Matplotlib의 기본 폰트가 한글을 지원하지 않기 때문입니다.
+* **해결책:** 노트북 최상단에 아래 코드를 추가하여 맑은 고딕(Windows) 또는 애플고딕(Mac)으로 폰트를 설정해 주세요.
+```python
+import matplotlib.pyplot as plt
+plt.rc('font', family='Malgun Gothic') # Windows 기준
+# plt.rc('font', family='AppleGothic') # Mac 기준
+plt.rcParams['axes.unicode_minus'] = False
+
+```
+
+
+
+```
 
