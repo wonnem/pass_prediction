@@ -1,9 +1,3 @@
-요청하신 6가지 구조(Hero, Demo, Features, Architecture, Runbook, Troubleshooting)에 맞춰, 깃허브 레포지토리(`pass_prediction`)에 바로 사용할 수 있도록 정밀하게 구성한 `README.md` 초안입니다.
-
-주피터 노트북 파일명과 입시 예측 프로젝트의 특성을 고려하여 기술적인 완성도를 높여 작성했습니다. 아래 내용을 복사해서 레포지토리 메인에 `README.md` 파일로 추가해 보세요!
-
----
-
 ```markdown
 # 🎓 pass_prediction: 대학교 입시결과 예측 모델
 
@@ -142,16 +136,5 @@ plt.rc('font', family='Malgun Gothic') # Windows 기준
 # plt.rc('font', family='AppleGothic') # Mac 기준
 plt.rcParams['axes.unicode_minus'] = False
 
-```
 
 
-
-```
-
----
-
-### 💡 팁
-1. **Demo 영역 이미지 넣는 방법:** 주피터 노트북을 실행하면서 나온 결과 그래프(예: 중요도 그래프, 성적 분포도 등)를 캡처한 뒤, 레포지토리 내에 `images` 폴더를 만들어 저장하고 `![설명](images/파일명.png)` 형태로 경로를 적어주면 깃허브 화면에 멋지게 나타납니다.
-2. **파일명 정리:** 현재 주피터 노트북 파일명인 `우송고_30723_이혜원_pass_prediction.ipynb`는 제출용 포맷으로 보이는데, 깃허브 포트폴리오의 깔끔함을 유지하고 싶다면 파일명을 `admission_pass_prediction.ipynb`처럼 영문 중심의 직관적인 이름으로 변경하시는 것도 추천해 드립니다.
-
-```
